@@ -27,10 +27,10 @@ pipeline {
 
         stage('build gradle') {
             steps {
-                echo  './gradlew build'
+                sh  '/demo/./gradlew build'
 
 
-                echo 'ls -al ./build'
+                sh 'ls -al ./build'
             }
             post {
                 success {
