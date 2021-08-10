@@ -27,10 +27,10 @@ pipeline {
 
         stage('build gradle') {
             steps {
-                sh  './gradlew build'
+                echo  './gradlew build'
 
 
-                sh 'ls -al ./build'
+                echo 'ls -al ./build'
             }
             post {
                 success {
@@ -45,13 +45,13 @@ pipeline {
 
         stage('dockerizing'){
             steps{
-                sh 'docker build . -t ci/test'
+                echo 'docker build . -t ci/test'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 47788:47788 --name ci_test ci/test'
+                echo 'docker run -d -p 47788:47788 --name ci_test ci/test'
             }
 
             post {
