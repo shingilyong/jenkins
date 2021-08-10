@@ -1,1 +1,1 @@
-jenkins pipeline test1234
+jenkins pipeline test
