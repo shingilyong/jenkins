@@ -16,7 +16,7 @@ pipeline {
                 }
 
                 always {
-                    echo 'done prepare'
+                    echo 'done prepare1'
                 }
 
                 cleanup {
