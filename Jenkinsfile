@@ -45,7 +45,7 @@ pipeline {
 
         stage('dockerizing'){
             steps{
-                sh 'docker build . -t ci/test'
+                echo 'docker build . -t ci/test'
             }
         }
 
