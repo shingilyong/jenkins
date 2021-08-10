@@ -26,12 +26,12 @@ pipeline {
         }
 
         stage('build gradle') {
-            //steps {
-               // sh  './gradlew build'
+            steps {
+                sh  './gradlew build'
 
 
-               // sh 'ls -al ./build'
-            //}
+                sh 'ls -al ./build'
+            }
             post {
                 success {
                     echo 'gradle build success'
@@ -44,9 +44,10 @@ pipeline {
         }
 
         stage('dockerizing'){
-           // steps{
-                //sh 'docker build . -t ci/test'
+            steps{
+                sh 'docker build . -t ci/test'
             }
+        }
 
         stage('Deploy') {
             steps {
