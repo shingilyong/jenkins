@@ -50,8 +50,8 @@ pipeline {
 
         stage('push'){
             steps{
-                sh 'docker login https://3.35.140.37/ -u admin -p admin'
-                sh 'docker push 3.35.140.37/hello'
+                sh 'docker login -u sgy12303 -p tmddyd12303'
+                sh 'docker push sgy12303/jenkins:0.1'
             }
         }
 
