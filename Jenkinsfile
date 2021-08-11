@@ -31,7 +31,7 @@ pipeline {
 
         stage('build gradle') {
             steps {
-                sh  './demo/gradlew build'
+                sh  'gradlew build'
 
 
                 sh 'ls -al ./build'
