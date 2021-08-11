@@ -48,6 +48,13 @@ pipeline {
             }
         }
 
+        stage('push'){
+            steps{
+                sh 'docker login https://3.35.140.37/ -u admin -p admin'
+                sh 'docker push 3.35.140.37/hello'
+            }
+        }
+
         stage('Deploy') {
             steps {
                 echo 'docker run -d -p 47788:47788 --name ci_test ci/test'
