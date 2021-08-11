@@ -51,7 +51,7 @@ pipeline {
         stage('push'){
             steps{
                 sh 'docker login -u sgy12303 -p tmddyd12303'
-                sh 'docker push sgy12303/jenkins:0.1'
+                sh 'docker push ci/test:0.1'
             }
         }
 
