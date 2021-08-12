@@ -63,6 +63,8 @@ pipeline {
 
         stage('Deploy') {
             steps {
+                sh 'cd ~/k8s'
+                cd 'git init'
                 sh 'git config --global user.email "sgy12303@gmail.com"'
                 sh 'git add .'
                 sh 'git commit -m "test"'
