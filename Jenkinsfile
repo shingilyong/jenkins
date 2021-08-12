@@ -62,7 +62,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 47788:47788 --name jenkins_test ${registry}:${tag}'
+                echo 'docker run -d -p 47788:47788 --name jenkins_test ${registry}:${tag}'
             }
 
             post {
