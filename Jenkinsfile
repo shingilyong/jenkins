@@ -44,13 +44,13 @@ pipeline {
 
         stage('dockerizing'){
             steps{
-                sh 'docker build . -t ci/test'
+                sh 'docker build . -t sgy12303/test:0.1'
             }
         }
 
         stage('push'){
             steps{
-                sh 'docker push ci/test'
+                sh 'docker push sgy12303/test:0.1'
             }
         }
 
