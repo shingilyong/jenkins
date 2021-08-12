@@ -30,6 +30,12 @@ pipeline {
             }
         }
 
+        stage('git clone') {
+            steps {
+                sh 'git clone https://github.com/shingilyong/jenkins.git'
+            }
+        }
+
         stage('build gradle') {
             steps {
                 sh 'chmod +x gradlew'
@@ -62,7 +68,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'docker run -d -p 47788:47788 --name jenkins_test ${registry}:${tag}'
+                echo 'git '
             }
 
             post {
