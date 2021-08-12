@@ -63,11 +63,11 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'git remote add origin git@github@.com:shingilyong/k8s.git'
+                sh 'git remote add original git@github@.com:shingilyong/k8s.git'
                 sh 'git config --global user.email "sgy12303@gmail.com"'
                 sh 'git add .'
                 sh 'git commit -m "test"'
-                sh 'git push'
+                sh 'git push original master'
             }
 
             post {
