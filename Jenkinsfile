@@ -56,7 +56,7 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'docker run -d -p 47788:47788 --name ci_test ci/test'
+                sh 'docker run -d -p 47788:47788 --name jenkins_test sgy12303/test:0.1'
             }
 
             post {
