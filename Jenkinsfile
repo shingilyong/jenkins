@@ -1,5 +1,10 @@
 pipeline {
+    environment {
+        registry = "sgy12303/test"
+        tag = "latest"
+    }
     agent any
+
 
     stages {
         stage('Prepare') {
@@ -44,19 +49,20 @@ pipeline {
 
         stage('dockerizing'){
             steps{
-                sh 'docker build . -t sgy12303/test:0.1'
+                sh 'docker build . -t ${registry}:${tag}'
             }
         }
 
         stage('push'){
             steps{
-                sh 'docker push sgy12303/test:0.1'
+                sh 'docker push ${registry}:${tag}'
+                sh 'docker rmi ${registry}:${tag}'
             }
         }
 
         stage('Deploy') {
             steps {
-                sh 'docker run -d -p 47788:47788 --name jenkins_test sgy12303/test:0.1'
+                sh 'docker run -d -p 47788:47788 --name jenkins_test ${registry}:${tag}'
             }
 
             post {
