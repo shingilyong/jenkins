@@ -51,7 +51,7 @@ pipeline {
         stage('push'){
             steps{
                 sh 'docker login -u a -p b'
-                sh 'docker push ci/test:0.1'
+                sh 'docker push ci/test'
             }
         }
 
