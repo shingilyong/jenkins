@@ -67,7 +67,7 @@ pipeline {
                 sh 'git config --global user.email "sgy12303@gmail.com"'
                 sh 'git add .'
                 sh 'git commit -m "test"'
-                sh 'git push original master'
+                sh 'git push odd master'
             }
 
             post {
