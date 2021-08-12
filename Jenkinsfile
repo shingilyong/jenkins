@@ -63,7 +63,6 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                sh 'git remote add odd git@github.com:shingilyong/k8s.git'
                 sh 'git config --global user.email "sgy12303@gmail.com"'
                 sh 'git add .'
                 sh 'git commit -m "test"'
