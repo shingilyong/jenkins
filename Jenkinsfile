@@ -30,11 +30,6 @@ pipeline {
             }
         }
 
-        stage('git clone') {
-            steps {
-                sh 'git clone https://github.com/shingilyong/jenkins.git'
-            }
-        }
 
         stage('build gradle') {
             steps {
@@ -68,7 +63,9 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                echo 'git '
+                sh 'git add .'
+                sh 'git commit -m "test"'
+                sh 'git push'
             }
 
             post {
