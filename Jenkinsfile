@@ -62,8 +62,7 @@ pipeline {
         }
 
         stage('Deploy') {
-            steps {
-            }
+
 
             post {
                 success {
