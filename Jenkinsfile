@@ -39,7 +39,7 @@ pipeline {
             }
             post {
                 success {
-                    echo 'gradle build success1'
+                    echo 'gradle build success'
                 }
 
                 failure {
