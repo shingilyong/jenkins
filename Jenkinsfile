@@ -42,7 +42,7 @@ pipeline {
 
     stage('dockerizing') {
       parallel {
-        stage('dockerizing') {
+        stage('dockerizing1') {
           steps {
             sh 'docker build . -t ${registry}:${tag}'
           }
