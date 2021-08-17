@@ -59,7 +59,7 @@ pipeline {
 
     stage('push') {
       steps {
-        sh 'docker login  -u admin -p admin'
+
         sh 'docker push ${registry}:${tag}'
         sh 'docker rmi ${registry}:${tag}'
       }
