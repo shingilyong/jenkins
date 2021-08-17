@@ -44,8 +44,7 @@ pipeline {
       parallel {
         stage('dockerizing') {
           steps {
-            sh '''sudo chmod 666 /var/run/docker.sock
-docker build . -t ${registry}:${tag}'''
+            sh 'docker build . -t ${registry}:${tag}'
           }
         }
 
