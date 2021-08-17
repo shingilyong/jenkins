@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('Prepare1') {
+    stage('Prepare') {
       agent any
       post {
         success {
