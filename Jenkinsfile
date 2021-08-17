@@ -44,13 +44,14 @@ pipeline {
       parallel {
         stage('dockerizing') {
           steps {
-            sh 'sudo docker build . -t ${registry}:${tag}'
+            sh '''chmod 666 /var/run/docker.sock
+docker build . -t ${registry}:${tag}'''
           }
         }
 
-        stage('') {
+        stage('ls -la') {
           steps {
-            sh 'sh \'ls -la\''
+            sh 'ls -la'
           }
         }
 
