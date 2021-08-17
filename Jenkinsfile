@@ -1,82 +1,89 @@
 pipeline {
-    environment {
-        registry = "sgy12303/test"
-        tag = "latest"
+  agent any
+  stages {
+    stage('Prepare') {
+      agent any
+      post {
+        success {
+          echo 'prepare success'
+        }
+
+        always {
+          echo 'done prepare'
+        }
+
+        cleanup {
+          echo 'after all other post conditions'
+        }
+
+      }
+      steps {
+        checkout scm
+      }
     }
-    agent any
 
-
-    stages {
-        stage('Prepare') {
-            agent any
-
-            steps {
-                checkout scm
-            }
-
-            post {
-
-                success {
-                    echo 'prepare success'
-                }
-
-                always {
-                    echo 'done prepare'
-                }
-
-                cleanup {
-                    echo 'after all other post conditions'
-                }
-            }
+    stage('build gradle') {
+      post {
+        success {
+          echo 'gradle build success'
         }
 
-
-        stage('build gradle') {
-            steps {
-                sh 'chmod +x gradlew'
-                sh  './gradlew build'
-                sh 'ls -al ./build'
-            }
-            post {
-                success {
-                    echo 'gradle build success'
-                }
-
-                failure {
-                    echo 'gradle build failed'
-                }
-            }
+        failure {
+          echo 'gradle build failed'
         }
 
-        stage('dockerizing'){
-            steps{
-                sh 'docker build . -t ${registry}:${tag}'
-            }
-        }
-
-        stage('push'){
-            steps{
-                sh 'docker login 15.164.37.117:443 -u admin -p admin'
-                sh 'docker push ${registry}:${tag}'
-                sh 'docker rmi ${registry}:${tag}'
-            }
-        }
-
-        stage('Deploy') {
-            steps{
-                echo 'success'
-            }
-
-
-            post {
-                success {
-                    echo 'success'
-                }
-
-                failure {
-                    echo 'failed'
-                }
-            }
-        }
+      }
+      steps {
+        sh 'chmod +x gradlew'
+        sh './gradlew build'
+        sh 'ls -al ./build'
+      }
     }
+
+    stage('dockerizing') {
+      parallel {
+        stage('dockerizing') {
+          steps {
+            sh 'sudo docker build . -t ${registry}:${tag}'
+          }
+        }
+
+        stage('') {
+          steps {
+            sh 'sh \'ls -la\''
+          }
+        }
+
+      }
+    }
+
+    stage('push') {
+      steps {
+        sh 'docker login 15.164.37.117:443 -u admin -p admin'
+        sh 'docker push ${registry}:${tag}'
+        sh 'docker rmi ${registry}:${tag}'
+      }
+    }
+
+    stage('Deploy') {
+      post {
+        success {
+          echo 'success'
+        }
+
+        failure {
+          echo 'failed'
+        }
+
+      }
+      steps {
+        echo 'success'
+      }
+    }
+
+  }
+  environment {
+    registry = 'sgy12303/test'
+    tag = 'latest'
+  }
 }
