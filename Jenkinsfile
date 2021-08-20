@@ -23,32 +23,13 @@ spec:
     args:
     - 99d
     image: 3.113.26.200:32002/library/kaniko-project/executor:debug
-    volumeMounts:
-    - name: cacrt
-      mountPath: /kaniko/ssl/certs/
-    - name: dockerconfigjson
-      mountPath: /kaniko/.docker/
   - name: helm
     command:
     - sleep
     args:
     - 99d
     image: 3.113.26.200:32002/library/alpine/helm:latest
-  volumes:
-  - name: cacrt
-    secret:
-      secretName: registry-cert
-      items:
-      - key: additional-ca-cert-bundle.crt
-        path: "additional-ca-cert-bundle.crt"
-  - name: dockerconfigjson
-    secret:
-      secretName: registry-cert
-      items:
-      - key: config.json
-        path: "config.json"
-  imagePullSecrets:
-  - name: harbor-cred
+
 '''
         }
     }
