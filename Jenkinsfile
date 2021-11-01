@@ -25,7 +25,7 @@ pipeline {
     stage('build gradle') {
       post {
         success {
-          echo 'gradle build success'
+          echo 'gradle build succss'
         }
 
         failure {
