@@ -17,7 +17,7 @@ spec:
     args:
     - 99d
     image: gradle:latest
-  - image: docker
+  - image: docker-ce-cli
     name: docker
     command:
     - sleep
@@ -70,7 +70,7 @@ spec:
         stage('dockerizing1') {
           steps {
 
-            sh 'docker build . -t ${registry}:${tag}'
+            sh 'docker build . -t ${HARBOR_URL}:${BUILD_TAG}'
           }
         }
 
