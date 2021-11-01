@@ -3,6 +3,7 @@ pipeline {
     HARBOR_URL= "3.38.46.241"
     APP_NAME= "test"
     CI_PROJECT_PATH= "test"
+    }
   agent {
     kubernetes {
       yaml '''
