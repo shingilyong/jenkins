@@ -17,7 +17,7 @@ spec:
     args:
     - 99d
     image: gradle:latest
-  - image: docker-ce-cli
+  - image: docker:latest
     name: docker
     command:
     - sleep
