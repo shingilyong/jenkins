@@ -16,7 +16,7 @@ spec:
     - sleep
     args:
     - 99d
-    image: 3.38.46.241/library/gradle:latest
+    image: gradle:latest
   imagePullSecrets:
   - name: harbor-cred   
 '''
