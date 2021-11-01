@@ -19,7 +19,10 @@ spec:
     image: gradle:latest
   - image: docker
     name: docker
-    resources: {}
+    command:
+    - sleep
+    args:
+    - 99d
 '''
       }
     }
