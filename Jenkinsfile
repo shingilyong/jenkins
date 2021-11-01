@@ -17,12 +17,6 @@ spec:
     args:
     - 99d
     image: gradle:latest
-  - image: docker:latest
-    name: docker
-    command:
-    - sleep
-    args:
-    - 99d
 '''
       }
     }
