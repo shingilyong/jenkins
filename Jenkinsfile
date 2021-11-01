@@ -1,5 +1,21 @@
 pipeline {
-  agent any
+  environment {
+    HARBOR_URL= "3.38.46.241"
+    APP_NAME= "test"
+    CI_PROJECT_PATH= "test"
+  agent {
+    kubernetes {
+      yaml '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: gradle
+    command:
+    - sleep
+    args:
+    - 99d
+    image: 3.38.46.241/library/gradle:latest
   stages {
     stage('Prepare') {
       agent any
@@ -82,9 +98,5 @@ pipeline {
       }
     }
 
-  }
-  environment {
-    registry = 'sgy12303/test'
-    tag = 'latest'
   }
 }
