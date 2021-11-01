@@ -17,6 +17,8 @@ spec:
     args:
     - 99d
     image: 3.38.46.241/library/gradle:latest
+ imagePullSecrets:
+ - name: harbor-cred   
 '''
       }
     }
