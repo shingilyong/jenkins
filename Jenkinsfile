@@ -16,9 +16,11 @@ spec:
     args:
     - 99d
     image: 3.38.46.241/library/gradle:latest
+'''
+      }
+    }
   stages {
     stage('Prepare') {
-      agent any
       post {
         success {
           echo 'prepare success'
@@ -99,5 +101,4 @@ spec:
     }
 
   }
-}
 }
