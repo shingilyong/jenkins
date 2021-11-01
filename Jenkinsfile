@@ -17,8 +17,9 @@ spec:
     args:
     - 99d
     image: gradle:latest
-  imagePullSecrets:
-  - name: harbor-cred   
+  - image: docker
+    name: docker
+    resources: {}
 '''
       }
     }
