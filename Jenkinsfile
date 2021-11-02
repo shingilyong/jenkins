@@ -17,6 +17,21 @@ spec:
     args:
     - 99d
     image: gradle:latest
+  - name: docker
+    image: docker:dind
+    command:
+    - sleep
+    args:
+    - 99d
+    privileged: true
+    volumeMounts:
+    - name: dockersock
+      mountPath: /var/run/docker.sock
+  volume:
+  - name: dockersock
+    hostPath:
+      path: /var/run/docker.sock
+
 '''
       }
     }
@@ -55,7 +70,6 @@ spec:
       steps {
         sh 'chmod +x gradlew'
         sh './gradlew build'
-        sh 'ls -al ./build'
       }
     }
 
