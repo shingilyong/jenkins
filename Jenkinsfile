@@ -60,22 +60,12 @@ spec:
     }
 
     stage('dockerizing') {
-      parallel {
-        stage('dockerizing1') {
           steps {
 
             sh 'docker build . -t ${HARBOR_URL}:${BUILD_TAG}'
           }
         }
 
-        stage('ls -la') {
-          steps {
-            sh 'ls -la'
-          }
-        }
-
-      }
-    }
 
     stage('push') {
       steps {
