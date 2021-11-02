@@ -11,12 +11,12 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: gradle
-    command:
-    - sleep
-    args:
-    - 99d
-    image: gradle:latest
+#  - name: gradle
+#    command:
+#    - sleep
+#    args:
+#    - 99d
+#    image: gradle:latest
   - name: docker
     image: alpinelinux/docker-cli
     command:
