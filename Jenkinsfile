@@ -21,7 +21,7 @@ spec:
     image: docker:latest
     command:
     - cat
-    tty: ture
+    tty: true
     privileged: true
     volumeMounts:
     - name: dockersock
