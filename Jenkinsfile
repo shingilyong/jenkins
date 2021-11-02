@@ -11,18 +11,11 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-#  - name: gradle
-#    command:
-#    - sleep
-#    args:
-#    - 99d
-#    image: gradle:latest
   - name: docker
-    image: docker
+    image: docker:20.10.10
     command:
     - cat
     tty: true
-
 '''
       }
     }
@@ -47,23 +40,23 @@ spec:
       }
     }
 
-#    stage('build gradle') {
-#      post {
-#        success {
-#          echo 'gradle build succss'
-#        }
-#
-#        failure {
-#          echo 'gradle build failed'
-#        }
-#
-#      }
-#      steps {
-#        sh 'chmod +x gradlew'
-#        sh './gradlew build'
-#      }
-#    }
-#
+    stage('build gradle') {
+      post {
+        success {
+          echo 'gradle build succss'
+        }
+
+        failure {
+          echo 'gradle build failed'
+        }
+
+      }
+      steps {
+        sh 'chmod +x gradlew'
+        sh './gradlew build'
+      }
+    }
+
     stage('dockerizing') {
           steps {
             sh 'docker build  -t ${HARBOR_URL}:${BUILD_TAG} .'
@@ -74,8 +67,8 @@ spec:
     stage('push') {
       steps {
 
-        sh 'docker push ${registry}:${tag}'
-        sh 'docker rmi ${registry}:${tag}'
+        sh 'docker push ${HARBOR_URL}:${BUild_TAG}'
+        sh 'docker rmi ${HARBOR_URL}:${BUILD_TAG}'
       }
     }
 
