@@ -18,7 +18,7 @@ spec:
     - 99d
     image: gradle:latest
   - name: docker
-    image: docker:dind
+    image: docker:latest
     command:
     - sleep
     args:
