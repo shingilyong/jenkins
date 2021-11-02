@@ -74,8 +74,7 @@ spec:
 
     stage('dockerizing') {
           steps {
-
-            sh 'docker build . -t ${HARBOR_URL}:${BUILD_TAG}'
+            sh 'docker build  -t ${HARBOR_URL}:${BUILD_TAG} .'
           }
         }
 
