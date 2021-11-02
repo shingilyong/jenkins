@@ -47,23 +47,23 @@ spec:
       }
     }
 
-    stage('build gradle') {
-      post {
-        success {
-          echo 'gradle build succss'
-        }
-
-        failure {
-          echo 'gradle build failed'
-        }
-
-      }
-      steps {
-        sh 'chmod +x gradlew'
-        sh './gradlew build'
-      }
-    }
-
+#    stage('build gradle') {
+#      post {
+#        success {
+#          echo 'gradle build succss'
+#        }
+#
+#        failure {
+#          echo 'gradle build failed'
+#        }
+#
+#      }
+#      steps {
+#        sh 'chmod +x gradlew'
+#        sh './gradlew build'
+#      }
+#    }
+#
     stage('dockerizing') {
           steps {
             sh 'docker build  -t ${HARBOR_URL}:${BUILD_TAG} .'
