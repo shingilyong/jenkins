@@ -18,7 +18,7 @@ spec:
     - 99d
     image: gradle:latest
   - name: docker
-    image: docker:latest
+    image: jelastic/docker-ce
     command:
     - cat
     tty: true
