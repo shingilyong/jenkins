@@ -18,7 +18,7 @@ spec:
 #    - 99d
 #    image: gradle:latest
   - name: docker
-    image: alpinelinux/docker-cli
+    image: docker
     command:
     - cat
     tty: true
