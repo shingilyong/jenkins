@@ -18,18 +18,10 @@ spec:
     - 99d
     image: gradle:latest
   - name: docker
-    image: jelastic/docker-ce
+    image: alpinelinux/docker-cli
     command:
     - cat
     tty: true
-    privileged: true
-    volumeMounts:
-    - name: dockersock
-      mountPath: /var/run/docker.sock
-  volumes:
-  - name: dockersock
-    hostPath:
-      path: /var/run/docker.sock
 
 '''
       }
