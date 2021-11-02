@@ -11,11 +11,13 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: docker
-    image: docker:20.10.10
+  - name: kaniko
+    image: pull hellojukay/kaniko-project-executor:debug
     command:
-    - cat
-    tty: true
+    - sleep
+    args:
+    - 99d
+
 '''
       }
     }
@@ -59,7 +61,7 @@ spec:
 
     stage('dockerizing') {
           steps {
-            sh 'docker build  -t ${HARBOR_URL}:${BUILD_TAG} .'
+            sh '/kaniko/executor --context ./ --dockerfile ./dockerfile --destination $HARBOR_URL/$CI_PROJECT_PATH/$APP_NAME:$BUILD_TAG'
           }
         }
 
