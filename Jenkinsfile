@@ -20,9 +20,8 @@ spec:
   - name: docker
     image: docker:latest
     command:
-    - sleep
-    args:
-    - 99d
+    - cat
+    tty: ture
     privileged: true
     volumeMounts:
     - name: dockersock
