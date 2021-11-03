@@ -23,12 +23,17 @@ spec:
     - cat
     tty: true
     volumeMounts:
-    - name: docker
-      mountPath: /var/run/docker.sock
+    - name: dockerconfigjson
+      mountPath: /docker/.docker/
   volumes:
-  - name: docker
-    hostPath:
-      path: /var/run/docker.sock
+  - name: dockerconfigjson
+    secret: 
+      secretName: harbor-cred
+      items:
+      - key: ".dockerconfigjson"
+        path: "config.json"
+  imagePullSecrets:
+  - name: harbor-cred
 '''
       }
     }
