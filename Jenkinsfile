@@ -63,7 +63,7 @@ spec:
     stage('dockerizing') {
           steps {
             container('docker') {
-            sh 'docker build -t ${HARBOR_URL}:${BUILD_TAG} .'
+            sh 'docker build -t ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG} .'
           }
         }
 }
@@ -71,8 +71,8 @@ spec:
     stage('push') {
       steps {
         container('docker'){
-        sh 'docker push ${HARBOR_URL}:${BUILD_TAG}'
-        sh 'docker rmi ${HARBOR_URL}:${BUILD_TAG}'
+        sh 'docker push ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
+        sh 'docker rmi  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
       }
     }
 }
