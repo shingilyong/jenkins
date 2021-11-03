@@ -60,12 +60,12 @@ spec:
 
     stage('push') {
       steps {
-
+        container('docker'){
         sh 'docker push ${HARBOR_URL}:${BUILD_TAG}'
         sh 'docker rmi ${HARBOR_URL}:${BUILD_TAG}'
       }
     }
-
+}
     stage('Deploy') {
       post {
         success {
