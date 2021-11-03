@@ -13,7 +13,7 @@ spec:
   containers:
   - name: gradle
     image: gradle
-    commad:
+    command:
     - sleep
     args:
     - 99d
