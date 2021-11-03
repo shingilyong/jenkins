@@ -11,8 +11,8 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: kaniko
-    image: hellojukay/kaniko-project-executor:debug
+  - name: docker
+    image: docker
     command:
     - sleep
     args:
