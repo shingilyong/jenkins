@@ -53,11 +53,10 @@ spec:
 }
     stage('dockerizing') {
           steps {
-            container('docker') {
             sh 'docker build -t ${HARBOR_URL}:${BUILD_TAG} .'
           }
         }
-}
+
 
     stage('push') {
       steps {
