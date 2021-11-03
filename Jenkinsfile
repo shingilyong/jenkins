@@ -71,6 +71,7 @@ spec:
     stage('push') {
       steps {
         container('docker'){
+        docker.withRegistry('3.38.46.241', 'admin')
         sh 'docker push ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
         sh 'docker rmi  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
       }
