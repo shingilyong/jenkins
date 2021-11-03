@@ -14,34 +14,19 @@ spec:
   - name: docker
     image: docker
     command:
-    - sleep
-    args:
-    - 99d
-
+    - cat
+    tty: true
+    volumeMounts:
+    - name: docker
+      mountPath: /var/run/docker.sock
+  volumes:
+  - name: docker
+    hostPath:
+      path: /var/run/docker.sock
 '''
       }
     }
   stages {
-    stage('Prepare') {
-      post {
-        success {
-          echo 'prepare success'
-        }
-
-        always {
-          echo 'done prepare'
-        }
-
-        cleanup {
-          echo 'after all other post conditions'
-        }
-
-      }
-      steps {
-        checkout scm
-      }
-    }
-
     stage('build gradle') {
       post {
         success {
