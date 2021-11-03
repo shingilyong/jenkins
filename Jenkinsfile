@@ -17,6 +17,18 @@ spec:
     - sleep
     args:
     - 99d
+  - name: docker
+    image: docker
+    command:
+    - cat
+    tty: true
+    volumeMounts:
+    - name: docker
+      mountPath: /var/run/docker.sock
+  volumes:
+  - name: docker
+    hostPath:
+      path: /var/run/docker.sock
 '''
       }
     }
