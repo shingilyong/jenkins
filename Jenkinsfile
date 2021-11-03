@@ -11,6 +11,12 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
+  - name: gradle
+    image: gradle
+    commad:
+    - sleep
+    args:
+    - 99d
   - name: docker
     image: docker
     command:
