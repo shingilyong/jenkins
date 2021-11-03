@@ -26,7 +26,7 @@ spec:
     - name: docker
       mountPath: /var/run/docker.sock
     - name: dockerconfigjson
-      mountPath: /docker/.docker/
+      mountPath: .docker/
   volumes:
   - name: docker
     hostPath:
