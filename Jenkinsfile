@@ -49,7 +49,7 @@ spec:
           sh './gradlew build'
       }
     }
-}
+
     stage('dockerizing') {
           steps {
             container('docker') {
