@@ -70,7 +70,7 @@ spec:
 }
     stage('Deploy') {
       steps {
-        git credentialsID: 'test',
+        git credentialsId: 'test',
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
           
