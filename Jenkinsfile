@@ -4,6 +4,7 @@ pipeline {
     APP_NAME= "test"
     CI_PROJECT_PATH= "test"
     HARBOR_CREDENTIAL= credentials('admin')
+    SSH_CREDENTIAL= credentials('test')
     }
   agent {
     kubernetes {
@@ -78,7 +79,7 @@ spec:
       steps {
         git branch: "main",
             url: "git@github.com:shingilyong/app.git"
-            credentialsId: credentials('test')
+            credentialsId: ${SSH_CREDENTAL}
 
         sh 'git clone git@github.com:shingilyong/app.git'
         sh "sed -i 's/test:.*\$/test:${currentBuild.number}/g' deploy.yaml"
