@@ -73,7 +73,6 @@ spec:
         git(
               branch: 'main',
               url: 'git@github.com:shingilyong/app.git'
-              credentialsId: 'test'
           )
 
         sh 'git clone git@github.com:shingilyong/app.git'
