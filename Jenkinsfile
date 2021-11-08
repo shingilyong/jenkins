@@ -78,7 +78,7 @@ spec:
       steps {
         git branch: "main",
             url: "git@github.com:shingilyong/app.git"
-            credentialsId: "700afea4-5f12-4280-95a0-af7bf0d95a84"
+            credentialsId: "test"
 
         sh 'git clone git@github.com:shingilyong/app.git'
         sh "sed -i 's/test:.*\$/test:${currentBuild.number}/g' deploy.yaml"
