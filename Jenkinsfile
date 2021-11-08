@@ -21,7 +21,7 @@ spec:
   - name: helm
     image: helm
     command:
-    - sleep:
+    - sleep
     args:
     - 99d
   - name: docker
