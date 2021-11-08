@@ -18,6 +18,12 @@ spec:
     - sleep
     args:
     - 99d
+  - name: helm
+    image: helm
+    command:
+    - sleep:
+    args:
+    - 99d
   - name: docker
     image: docker
     command:
@@ -45,16 +51,6 @@ spec:
     }
   stages {
     stage('build gradle') {
-      post {
-        success {
-          echo 'gradle build succss'
-        }
-
-        failure {
-          echo 'gradle build failed'
-        }
-
-      }
       steps {
           sh 'chmod +x gradlew'
           sh './gradlew build'
@@ -79,18 +75,11 @@ spec:
     }
 }
     stage('Deploy') {
-      post {
-        success {
-          echo 'success'
-        }
-
-        failure {
-          echo 'failed'
-        }
-
-      }
       steps {
-        echo 'success'
+        sh 'git clone git@github.com:shingilyong/nginx.git'
+        sh 'cd nginx'
+        sh 'git commit -am "application update"
+        sh 'git push'
       }
     }
    }
