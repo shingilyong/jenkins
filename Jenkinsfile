@@ -76,6 +76,10 @@ spec:
 }
     stage('Deploy') {
       steps {
+        git branch: "main",
+            url: git@github.com:shingilyong/app.git"
+            credentailsId: "test"
+
         sh 'git clone git@github.com:shingilyong/app.git'
         sh "sed -i 's/test:.*\$/test:${currentBuild.number}/g' deploy.yaml"
         sh "git add deploy.yaml"
