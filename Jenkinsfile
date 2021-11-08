@@ -74,8 +74,6 @@ spec:
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
           
-        sh 'rm -rf app'
-        sh 'git clone git@github.com:shingilyong/app.git'
         sh "sed -i 's/test:.*\$/test:${currentBuild.number}/g' deploy.yaml"
         sh "git add deploy.yaml"
         sh "git commit -m 'application update ${currnetBuild.number}'"
