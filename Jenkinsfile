@@ -19,7 +19,7 @@ spec:
     args:
     - 99d
   - name: helm
-    image: helm
+    image: alpine/helm
     command:
     - sleep
     args:
