@@ -72,7 +72,7 @@ spec:
     stage('push') {
       steps {
         container('docker'){
-        sh 'docker login ${HARBOR_URL} -u admin ${HARBOR_CREDENTIAL_PSW}'
+        sh '''echo ${HARBOR_CREDENTIAL_PSW} | docker login ${HARBOR_URL} -u admin --password-stdin'''
         sh 'docker push ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
         sh 'docker rmi  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
       }
