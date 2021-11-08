@@ -78,7 +78,7 @@ spec:
       steps {
         sh 'git clone git@github.com:shingilyong/nginx.git'
         sh 'cd nginx'
-        sh 'git commit -am "application update"
+        sh 'git commit -am "application update"'
         sh 'git push'
       }
     }
