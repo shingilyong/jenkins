@@ -18,8 +18,8 @@ spec:
     - sleep
     args:
     - 99d
-  - name: helm
-    image: alpine/helm
+  - name: git
+    image: git
     command:
     - sleep
     args:
