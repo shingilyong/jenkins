@@ -76,10 +76,16 @@ spec:
 }
     stage('Deploy') {
       steps {
-        sh 'git clone git@github.com:shingilyong/nginx.git'
-        sh 'cd nginx'
-        sh 'git commit -am "application update"'
-        sh 'git push'
+        git credentialsId: '{Credential ID}',
+          url: 'https://github.com/shingilyong/app',
+          branch 'main'
+
+        sh "sed -i 's/test:.*\$/test:${currentBuild.number}/g' deploy.yaml"
+        sh "git add deploy.yaml"
+        sh "git commit -m 'application update ${currnetBuild.number}'"
+        sshagent(credentials: ['test']) {
+          sh "git remote set-url origin git@github.com:shingilyong/app.git"
+          sh "git push -u origin main"
       }
     }
    }
