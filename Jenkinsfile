@@ -70,10 +70,10 @@ spec:
 }
     stage('Deploy') {
       steps {
-        git(
-              branch: 'main',
-              url: 'git@github.com:shingilyong/app.git'
-          )
+        git credentialsID: 'test',
+            branch: 'main',
+            url: 'git@github.com:shingilyong/app.git'
+          
 
         sh 'git clone git@github.com:shingilyong/app.git'
         sh "sed -i 's/test:.*\$/test:${currentBuild.number}/g' deploy.yaml"
