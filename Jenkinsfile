@@ -4,8 +4,6 @@ pipeline {
     APP_NAME= "test"
     CI_PROJECT_PATH= "test"
     HARBOR_CREDENTIAL= credentials('admin')
-    USER_EMAIL="sgy12303@gmail.com"
-    USER_NAME="shingilyong"
     }
   agent {
     kubernetes {
@@ -77,11 +75,9 @@ spec:
             url: 'git@github.com:shingilyong/app.git'
         sh "sed -i 's/test:.*\$/test:${BUILD_TAG}/g' deploy.yaml"
         sh "git add deploy.yaml"
+        sh "git commit -m 'application update ${BUILD_TAG}'"
         sshagent(credentials: ['test']) {
           sh "git remote set-url origin git@github.com:shingilyong/app.git"
-          sh "git config --global user.email '${USER_EMAIL}'"
-          sh "git config --global user.name '${USER_NAME}'"
-          sh "git commit -m 'application update ${BUILD_TAG}'"
           sh "git push -u origin main"
       }
     }
