@@ -74,6 +74,7 @@ spec:
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
         sh "ls -al && cd app"  
+        sh "ls -al && cd app"
         sh "sed -i 's/test:.*\$/test:${currentBuild.number}/g' deploy.yaml"
         sh "git add deploy.yaml"
         sh "git commit -m 'application update ${currnetBuild.number}'"
