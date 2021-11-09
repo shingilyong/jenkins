@@ -79,8 +79,8 @@ spec:
         sh "git add deploy.yaml"
         sshagent(credentials: ['test']) {
           sh "git remote set-url origin git@github.com:shingilyong/app.git"
-          sh "git config --global user.email "${USER_EMAIL}"
-          sh "git config --global user.name "${USER_NAME}"
+          sh "git config --global user.email '${USER_EMAIL}'"
+          sh "git config --global user.name '${USER_NAME}'"
           sh "git commit -m 'application update ${BUILD_TAG}'"
           sh "git push -u origin main"
       }
