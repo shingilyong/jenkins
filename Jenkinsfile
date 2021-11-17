@@ -90,10 +90,10 @@ spec:
    }
   post {
     success {
-      slackSend (channel: '#general', color: '#00FF00', message: "SUCCESSFUL: '${JOB_NAME} ${BUILD_TAG}' $(BUILD_URL)")
+      slackSend (channel: '#general', color: '#00FF00', message: "SUCCESSFUL: '${JOB_NAME} [${BUILD_TAG}]' $(BUILD_URL)")
         }
     failure {
-      slackSend (channel: '#general', color: '#FF0000', message: "FAILED: '${JOB_NAME} ${BUILD_TAG}' $(BUILD_URL)")    
+      slackSend (channel: '#general', color: '#FF0000', message: "FAILED: '${JOB_NAME} [${BUILD_TAG}]' $(BUILD_URL)")    
         }
    }
   }  
