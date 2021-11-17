@@ -76,7 +76,7 @@ spec:
 }
     stage('Deploy') {
       steps {
-        git credentialsId: 'te',
+        git credentialsId: 'test',
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
         sh "sed -i 's/${APP_NAME}:.*\$/${APP_NAME}:${BUILD_TAG}/g' deploy.yaml"
