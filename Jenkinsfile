@@ -48,6 +48,8 @@ spec:
       agent any
       steps {
         slackSend (channel: '#general', color: '#00FF00', message: "STARTED: job '${JOB_NAME} [${BUILD_TAG}]' (${BUILD_URL})")
+          }
+        }
     stage('build gradle') {
       steps {
           sh 'chmod +x gradlew'
