@@ -88,6 +88,7 @@ spec:
       }
     }
    }
+ }
   post {
     success {
       slackSend (channel: '#general', color: '#00FF00', message: "SUCCESSFUL: '${JOB_NAME} [${BUILD_TAG}]' ${BUILD_URL}")
