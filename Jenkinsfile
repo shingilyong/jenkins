@@ -60,7 +60,7 @@ spec:
     stage('dockerizing') {
           steps {
             container('docker') {
-            sh 'docker build -t  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
+            sh 'docker build -t  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG} .'
           }
         }
 }
