@@ -96,5 +96,5 @@ spec:
       slackSend (channel: '#general', color: '#FF0000', message: "FAILED: '${JOB_NAME} [${BUILD_TAG}]' ${BUILD_URL}")    
         }
    }
-    
+ }  
 }
