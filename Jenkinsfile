@@ -80,7 +80,7 @@ spec:
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
         sh "sed -i 's/tag:/tag: \"${BUILD_TAG}\"/g' values.yaml"
-        sh "git add ."
+        sh "git add values.yaml"
         sh "git commit -m 'application update ${BUILD_TAG}'"
         sshagent(credentials: ['test']) {
           sh "git remote set-url origin git@github.com:shingilyong/app.git"
