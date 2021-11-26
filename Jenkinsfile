@@ -84,7 +84,7 @@ spec:
         sh "git commit -m 'application update ${BUILD_NUMBER}'"
         sh "git remote set-url origin git@github.com:shingilyong/app.git"
         sh "git push -u origin main"
-      }
+      
     }
    }
  }
