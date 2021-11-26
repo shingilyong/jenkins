@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    HARBOR_URL= "3.38.46.241"
+    HARBOR_URL= "3.37.156.227"
     APP_NAME= "test"
     CI_PROJECT_PATH= "test"
     HARBOR_CREDENTIAL= credentials('admin')
