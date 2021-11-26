@@ -47,7 +47,7 @@ spec:
     stage('build start') {
       agent any
       steps {
-        slackSend (channel: '#general', color: '#00FF00', message: "STARTED: job '${JOB_NAME} [${BUILD_TAG}]' (${BUILD_URL})")
+        slackSend (channel: '#general', color: '#00FF00', message: "STARTED: job '${JOB_NAME} [${BUILD_NUMBER}]' (${BUILD_URL})")
           }
         }
     stage('build gradle') {
@@ -60,7 +60,7 @@ spec:
     stage('dockerizing') {
           steps {
             container('docker') {
-            sh 'docker build -t  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG} .'
+            sh 'docker build -t  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_NUMBER} .'
           }
         }
 }
@@ -69,8 +69,8 @@ spec:
       steps {
         container('docker'){
         sh '''echo ${HARBOR_CREDENTIAL_PSW} | docker login ${HARBOR_URL} -u admin --password-stdin'''
-        sh 'docker push ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
-        sh 'docker rmi  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_TAG}'
+        sh 'docker push ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_NUMBER}'
+        sh 'docker rmi  ${HARBOR_URL}/${CI_PROJECT_PATH}/${APP_NAME}:${BUILD_NUMBER}'
       }
     }
 }
@@ -79,22 +79,21 @@ spec:
         git credentialsId: 'test',
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
-        sh "sed -i 's/tag:/tag: \"${BUILD_TAG}\"/g' values.yaml"
+        sh "sed -i 's/tag:/tag: \"${BUILD_NUMBER}\"/g' values.yaml"
         sh "git add values.yaml"
-        sh "git commit -m 'application update ${BUILD_TAG}'"
-        sshagent(credentials: ['test']) {
-          sh "git remote set-url origin git@github.com:shingilyong/app.git"
-          sh "git push -u origin main"
+        sh "git commit -m 'application update ${BUILD_NUMBER}'"
+        sh "git remote set-url origin git@github.com:shingilyong/app.git"
+        sh "git push -u origin main"
       }
     }
    }
  }
   post {
     success {
-      slackSend (channel: '#general', color: '#00FF00', message: "SUCCESSFUL: '${JOB_NAME} [${BUILD_TAG}]' ${BUILD_URL}")
+      slackSend (channel: '#general', color: '#00FF00', message: "SUCCESSFUL: '${JOB_NAME} [${BUILD_NUMBER}]' ${BUILD_URL}")
         }
     failure {
-      slackSend (channel: '#general', color: '#FF0000', message: "FAILED: '${JOB_NAME} [${BUILD_TAG}]' ${BUILD_URL}")    
+      slackSend (channel: '#general', color: '#FF0000', message: "FAILED: '${JOB_NAME} [${BUILD_NUMBER}]' ${BUILD_URL}")    
         }
    }
  }  
