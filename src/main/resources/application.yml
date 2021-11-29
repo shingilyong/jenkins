@@ -1,7 +1,0 @@
-spring:
-    mvc:
-        view:
-            prefix: /WEB_INF/jsp/
-            suffix: .jsp
-server:
-        address: 0.0.0.0
