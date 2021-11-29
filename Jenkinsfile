@@ -80,7 +80,7 @@ spec:
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
         sh "sed -i  '/tag: \"/d' values.yaml"
-        sh "sed -i '/repository:/a\tag: \"${BUILD_NUMBER}\"' values.yaml"
+        sh "sed -i '/repository:/a/tag: \"${BUILD_NUMBER}\"' values.yaml"
         sh "sed -i 's/tag:/  tag:/g' values.yaml"
         sh "git add values.yaml"
         sh "git commit -m 'application update ${BUILD_NUMBER}'"
