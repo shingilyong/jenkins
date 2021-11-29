@@ -79,7 +79,7 @@ spec:
         git credentialsId: 'test',
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
-        sh "sed -i '/tag:/tag: \"${BUILD_NUMBER}\"' values.yaml"
+        sh "sed -i 's/tag:/tag: \"${BUILD_NUMBER}\"/g' values.yaml"
         sh "git add values.yaml"
         sh "git commit -m 'application update ${BUILD_NUMBER}'"
         sshagent(credentials: ['test']) {
