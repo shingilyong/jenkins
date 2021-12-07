@@ -1,6 +1,6 @@
 pipeline {
   environment {
-    HARBOR_URL= "3.37.156.227"
+    HARBOR_URL= "3.110.9.34"
     APP_NAME= "app"
     CI_PROJECT_PATH= "study"
     HARBOR_CREDENTIAL= credentials('admin')
@@ -76,7 +76,7 @@ spec:
 }
     stage('Deploy') {
       steps {
-        git credentialsId: 'test',
+        git credentialsId: 'ssh',
             branch: 'main',
             url: 'git@github.com:shingilyong/app.git'
         sh "sed -i '9s/.*/  tag: \"${BUILD_NUMBER}\"/g' values.yaml"
